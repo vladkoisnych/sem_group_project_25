@@ -13,12 +13,14 @@ jobs:
         with:
           java-version: '17'
           distribution: 'adopt'
+        #setting up a docker network so it works
       - name: Setup network
         run: |
             docker network create --driver bridge group-project
       - name: Build with Maven
         run: mvn package
       - name: Build
+        #running the docker container and image
         run: docker build -t group_methods .
       - name: Run image
         run: docker run --network group-project --name groupcontainer group_methods
