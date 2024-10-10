@@ -1,5 +1,8 @@
 package com.napier.sem;
 
+/**
+ * Main Class
+ */
 public class App {
     /**
      * * Main function
