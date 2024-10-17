@@ -17,5 +17,5 @@ All members are expected to attend the 2 meetings each week. It will be marked i
 ## Job duties and respect
 Assigned tasks are to be completed within the time frame given due to the remainder of group being restricted in their work if any task has not been completed. We expect everyone to work together as a team and to respect each other and those around us. Noise levels should be kept to a minimum as to not disturb other users of the facility we are working in. If the situation arises in which one member cannot accept this they will be asked to adhere to the rules and if they cannot do this they will be asked to leave the group.
 
-##Disciplinary action
+## Disciplinary action
 Consequences of breaking the code of conduct will vary depending on what section was broken. If it is a minor thing it will be talked out within the group, the next step of action will be to report said member to the right authority. This could lead to exclusion from the group and based on the severity of the rule break direct contact with police or the university team. 
