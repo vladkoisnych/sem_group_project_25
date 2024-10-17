@@ -1,0 +1,3 @@
+[submodule "db/world-db"]
+	path = db/world-db
+	url = https://downloads.mysql.com/docs/world-db.zip
