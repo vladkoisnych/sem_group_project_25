@@ -1,7 +1,7 @@
 package com.napier.sem;
 
 /**
- * Represents an city
+ * Represents a city
  */
 public class City
 {
@@ -16,9 +16,9 @@ public class City
     public String city_name;
 
     /**
-     * City`s County Code
+     * City`s Country Code
      */
-    public String city_county_code;
+    public String city_countryCode;
 
     /**
      * City District
