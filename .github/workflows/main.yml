@@ -1,4 +1,4 @@
-name: A workflow for my Hello World App
+name: A workflow for SEM Group 25 Project
 on: push
 
 jobs:
@@ -14,15 +14,7 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
         #setting up a docker network so it works
-      - name: Setup network
-        run: |
-            docker network create --driver bridge group-project
       - name: Build with Maven
         run: mvn package
-      - name: Build
-        #running the docker container and image
-        run: docker build -t group_methods .
-      - name: Run image
-        run: docker run --network group-project --name groupcontainer group_methods
-      - name: view logs
-        run: docker logs groupcontainer
+      - name: Run docker compose
+        run: docker compose up --abort-on-container-exit
