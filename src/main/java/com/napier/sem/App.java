@@ -13,6 +13,31 @@ public class App {
         //actual code goes here
         System.out.println("MySQL Connection");
 
+        // Create new Application
+        App a = new App();
+
+        // Connect to database
+        a.connect();
+        System.out.println("Getting City");
+        // Get City
+        City city = a.getCity(1);
+        // Display results
+        a.displayCity(city);
+
+        // Disconnect from database
+        a.disconnect();
+    }
+
+    /**
+     * Connection to MySQL database.
+     */
+    private Connection con = null;
+
+    /**
+     * Connect to the MySQL database.
+     */
+    public void connect()
+    {
         try
         {
             // Load Database driver
@@ -24,9 +49,7 @@ public class App {
             System.exit(-1);
         }
 
-        // Connection to the database
-        Connection con = null;
-        int retries = 100;
+        int retries = 10;
         for (int i = 0; i < retries; ++i)
         {
             System.out.println("Connecting to database...");
@@ -37,9 +60,6 @@ public class App {
                 // Connect to database
                 con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "example");
                 System.out.println("Successfully connected");
-                // Wait a bit
-                Thread.sleep(10000);
-                // Exit for loop
                 break;
             }
             catch (SQLException sqle)
@@ -52,7 +72,13 @@ public class App {
                 System.out.println("Thread interrupted? Should not happen.");
             }
         }
+    }
 
+    /**
+     * Disconnect from the MySQL database.
+     */
+    public void disconnect()
+    {
         if (con != null)
         {
             try
@@ -65,5 +91,51 @@ public class App {
                 System.out.println("Error closing connection to database");
             }
         }
+    }
+
+    public City getCity(int ID)
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT ID, Name, Population "
+                            + "FROM city "
+                            + "WHERE ID = " + ID;
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Return new city if valid.
+            // Check one is returned
+            if (rset.next())
+            {
+                City city = new City();
+                city.city_id = rset.getInt("ID");
+                city.city_name = rset.getString("Name");
+                city.city_population = rset.getInt("Population");
+                System.out.println("Got city" + city.city_id + " " + city.city_name);
+                return city;
+            }
+            else
+                return null;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get city details");
+            return null;
+        }
+    }
+
+    public void displayCity(City city)
+    {
+        if (city != null)
+        {
+            System.out.println(
+                    city.city_id + " "
+                    + city.city_name + "\n"
+                    + city.city_population + "\n");
+        }else System.out.println("City is empty");
     }
 }
