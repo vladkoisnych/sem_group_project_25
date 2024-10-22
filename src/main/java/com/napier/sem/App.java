@@ -93,6 +93,12 @@ public class App {
         }
     }
 
+    /**
+     * * getCity function
+     * * getting a city by id,
+     * * created for testing purposes while implementing sql connection
+     * * @param id - city id
+     * */
     public City getCity(int ID)
     {
         try
@@ -128,6 +134,13 @@ public class App {
         }
     }
 
+
+    /**
+     * * displayCity function
+     * * printing the details of a chosen city,
+     * * created for testing purposes while implementing sql connection
+     * * @param city - city object
+     * */
     public void displayCity(City city)
     {
         if (city != null)
