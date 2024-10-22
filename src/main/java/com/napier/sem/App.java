@@ -32,32 +32,28 @@ public class App {
             if(inputSc.hasNextLine()){
                 String userInput = inputSc.nextLine();
 
-                switch (Integer.parseInt(userInput)) {
-                    case 1:
-                        // Get City
-                        City city = a.getCity(1);
-
-                        // Display results
-                        a.displayCity(city);
-                        break;
-                    case 2:
-                        // Report 2
-
-                        System.out.println("Report 2");
-                        break;
-                    default:
-                        //incorrect input
-
-                        System.out.println("Please input a correct option from the list");
-                        break;
-                }
-
-                try {
-                    Thread.sleep(10000);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
                 break;
+//                switch (Integer.parseInt(userInput)) {
+//                    case 1:
+//                        // Get City
+//                        City city = a.getCity(1);
+//
+//                        // Display results
+//                        a.displayCity(city);
+//                        break;
+//                    case 2:
+//                        // Report 2
+//
+//                        System.out.println("Report 2");
+//                        break;
+//                    default:
+//                        //incorrect input
+//
+//                        System.out.println("Please input a correct option from the list");
+//                        break;
+//                }
+
+
             }else break;
 
 
