@@ -51,6 +51,13 @@ public class App {
                         System.out.println("Please input a correct option from the list");
                         break;
                 }
+
+                try {
+                    Thread.sleep(10000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+                break;
             }else break;
 
 
