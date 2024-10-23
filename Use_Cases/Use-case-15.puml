@@ -6,7 +6,8 @@
 rectangle Database
 
 usecase UC1 as "Get a list of every country
-from largest to smallest population"
+in a continent from
+largest to smallest population"
 
 usecase Use as "Generate report"
 

@@ -5,7 +5,8 @@
 
 rectangle Database
 
-usecase UC1 as "Get a list of every country
+usecase UC1 as "Get a list of a size given by the user
+of countries in a continent
 from largest to smallest population"
 
 usecase Use as "Generate report"
