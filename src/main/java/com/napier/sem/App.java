@@ -1,6 +1,5 @@
 package com.napier.sem;
 import java.sql.*;
-import java.util.Scanner;
 
 /**
  * Main Class
@@ -21,47 +20,17 @@ public class App {
         // Connect to database
         a.connect();
 
-        Scanner inputSc = new Scanner(System.in);
 
-        while(true) {
-            //context menu for choosing your report
-            System.out.println("Please choose the report you want to get:\n");
+        System.out.println("Reports:\n");
 
-            System.out.println("1) Getting City");
+        System.out.println("1) Getting City");
 
-            if(inputSc.hasNextLine()){
-                String userInput = inputSc.nextLine();
+        // Get City
+        City city = a.getCity(1);
 
-                break;
-//                switch (Integer.parseInt(userInput)) {
-//                    case 1:
-//                        // Get City
-//                        City city = a.getCity(1);
-//
-//                        // Display results
-//                        a.displayCity(city);
-//                        break;
-//                    case 2:
-//                        // Report 2
-//
-//                        System.out.println("Report 2");
-//                        break;
-//                    default:
-//                        //incorrect input
-//
-//                        System.out.println("Please input a correct option from the list");
-//                        break;
-//                }
+        // Display results
+        a.displayCity(city);
 
-
-            }else break;
-
-
-        }
-
-
-
-        inputSc.close();
 
         // Disconnect from database
         a.disconnect();
