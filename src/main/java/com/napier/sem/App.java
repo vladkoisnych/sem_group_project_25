@@ -21,7 +21,6 @@ public class App {
         // Connect to database
         a.connect();
 
-
         //report 15
         ArrayList<Country> countries15 = a.report15();
         System.out.println("Report 15 size: " + countries15.size());
