@@ -1,5 +1,6 @@
 package com.napier.sem;
 import java.sql.*;
+import java.util.ArrayList;
 
 /**
  * Main Class
@@ -21,15 +22,12 @@ public class App {
         a.connect();
 
 
-        System.out.println("Reports:\n");
-
-        System.out.println("1) Getting City");
-
-        // Get City
-        City city = a.getCity(1);
+        //report 15
+        ArrayList<Country> countries15 = a.report15();
+        System.out.println("Report 15 size: " + countries15.size());
 
         // Display results
-        a.displayCity(city);
+
 
 
         // Disconnect from database
@@ -159,4 +157,42 @@ public class App {
                     + city.city_population + "\n");
         }else System.out.println("City is empty");
     }
+
+    public ArrayList<Country> report15()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT Code, Name, Population "
+                            + "FROM country "
+                            + "WHERE continent = 'europe' "
+                            + "ORDER BY Population DESC";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            ArrayList<Country> countries = new ArrayList<Country>();
+
+            //populate the array
+            while (rset.next())
+            {
+                Country country = new Country();
+                country.country_code = rset.getString("Code");
+                country.country_name = rset.getString("Name");
+                country.country_population = rset.getInt("Population");
+
+                countries.add(country);
+            }
+            return countries;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country list. Report 15");
+            return null;
+        }
+    }
+
 }
