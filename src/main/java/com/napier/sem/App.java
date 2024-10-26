@@ -21,9 +21,9 @@ public class App {
         // Connect to database
         a.connect();
 
-        //report 15
-        ArrayList<Country> countries15 = a.report15();
-        System.out.println("Report 15 size: " + countries15.size());
+        //report 16
+        ArrayList<Country> countries16 = a.report16();
+        System.out.println("Report 16 size: " + countries16.size());
 
         // Display results
 
@@ -157,7 +157,7 @@ public class App {
         }else System.out.println("City is empty");
     }
 
-    public ArrayList<Country> report15()
+    public ArrayList<Country> report16()
     {
         try
         {
@@ -167,7 +167,7 @@ public class App {
             String strSelect =
                     "SELECT Code, Name, Population "
                             + "FROM country "
-                            + "WHERE continent = 'europe' "
+                            + "WHERE region = 'Western Europe' "
                             + "ORDER BY Population DESC";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
@@ -189,7 +189,7 @@ public class App {
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get country list. Report 15");
+            System.out.println("Failed to get country list. Report 16");
             return null;
         }
     }
