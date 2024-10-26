@@ -17,7 +17,6 @@ public class App {
         // Create new Application
         App a = new App();
 
-
         // Connect to database
         a.connect();
 
