@@ -22,7 +22,7 @@ public class App {
         a.connect();
 
         ArrayList<Country> countries14 = a.report14();
-        System.out.println("Report 15 size: " + countries14.size());
+        System.out.println("Report 14 size: " + countries14.size());
 
         //report 15
         ArrayList<Country> countries15 = a.report15();
