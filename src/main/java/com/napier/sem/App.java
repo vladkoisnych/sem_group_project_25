@@ -21,6 +21,9 @@ public class App {
         // Connect to database
         a.connect();
 
+        ArrayList<Country> countries14 = a.report14();
+        System.out.println("Report 15 size: " + countries14.size());
+
         //report 15
         ArrayList<Country> countries15 = a.report15();
         System.out.println("Report 15 size: " + countries15.size());
@@ -156,6 +159,57 @@ public class App {
                     + city.city_population + "\n");
         }else System.out.println("City is empty");
     }
+
+
+    /**
+     * * report14 function
+     * * returning all the countries in the world organised by largest population to smallest,
+     * * created for report 14.
+     * */
+    public ArrayList<Country> report14()
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT Code, Name, Population "
+                            + "FROM country "
+                            + "ORDER BY Population DESC";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            ArrayList<Country> countries = new ArrayList<Country>();
+
+            //populate the array
+            while (rset.next())
+            {
+                Country country = new Country();
+                country.country_code = rset.getString("Code");
+                country.country_name = rset.getString("Name");
+                country.country_population = rset.getInt("Population");
+
+                countries.add(country);
+            }
+            return countries;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country list. Report 14");
+            return null;
+        }
+    }
+
+
+
+
+    /**
+     * * report15 function
+     * * returning all the countries in a continent organised by largest population to smallest,
+     * * created for report 15.
+     * */
 
     public ArrayList<Country> report15()
     {
