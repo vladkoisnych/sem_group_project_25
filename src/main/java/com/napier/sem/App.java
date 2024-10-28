@@ -20,7 +20,7 @@ public class App {
         // Connect to database
         a.connect();
 
-        //report 16
+        //report 14
         ArrayList<Country> countries14 = a.report14();
         System.out.println("Report 14 size: " + countries14.size());
 
