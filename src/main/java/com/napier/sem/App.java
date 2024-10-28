@@ -24,10 +24,7 @@ public class App {
         ArrayList<Country> countries17 = a.report17();
         System.out.println("Report 17 size: " + countries17.size());
 
-        // Display results
-        for (Country country : countries17) {
-            System.out.println(country.country_code + " " + country.country_name + " " + country.country_population);
-        }
+
 
         // Disconnect from database
         a.disconnect();
