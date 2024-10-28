@@ -32,8 +32,9 @@ public class App {
         ArrayList<Country> countries16 = a.report16();
         System.out.println("Report 16 size: " + countries16.size());
 
-        // Display results
-
+        //report 17
+        ArrayList<Country> countries17 = a.report17(10);
+        System.out.println("Report 17 size: " + countries17.size());
 
 
         // Disconnect from database
@@ -293,5 +294,46 @@ public class App {
             return null;
         }
     }
+
+    /**
+     * * report17 function
+     * * returning the top N populated countries in the world, where N is provided by the user
+     * * created for report 17.
+     * * @param n - n populated countries in the world, is provided by the user
+     * */
+
+    public ArrayList<Country> report17(int n) {
+        try {
+
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT Code, Name, Population " +
+                            "FROM country " +
+                            "ORDER BY Population DESC " +
+                            "LIMIT " + n;
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            ArrayList<Country> countries = new ArrayList<>();
+
+            // Populate the array
+            while (rset.next()) {
+                Country country = new Country();
+                country.country_code = rset.getString("Code");
+                country.country_name = rset.getString("Name");
+                country.country_population = rset.getInt("Population");
+
+                countries.add(country);
+            }
+            return countries;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country list. Report 17");
+            return null;
+        }
+    }
+
 
 }
