@@ -42,6 +42,13 @@ public class App {
         ArrayList<Country> countries18 = a.report18(continent, N);
         System.out.println("Report 18 size: " + countries18.size());
 
+        // report 19
+        String region = "Western Europe"; // Specify the region
+        N = 5; // Specify the top N countries
+        ArrayList<Country> countries19 = a.report19(region, N);
+        System.out.println("Report 19 size: " + countries19.size());
+
+
         // Disconnect from database
         a.disconnect();
     }
@@ -345,7 +352,7 @@ public class App {
      * * returning the top N populated countries in the continent, where N is provided by the user
      * * created for report 18.
      * * @param continent - continent, is provided by the user
-     * * @param n - n populated countries in the world, is provided by the user
+     * * @param n - n populated countries in the continent, is provided by the user
      * */
     public ArrayList<Country> report18(String continent, int n) {
         try {
@@ -376,6 +383,46 @@ public class App {
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get country list. Report 18");
+            return null;
+        }
+    }
+
+    /**
+     * * report19 function
+     * * returning the top N populated countries in the region, where N is provided by the user
+     * * created for report 19.
+     * * @param region - continent, is provided by the user
+     * * @param n - n populated countries in the region, is provided by the user
+     * */
+    public ArrayList<Country> report19(String region, int n) {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT Code, Name, Population " +
+                            "FROM country " +
+                            "WHERE region = '" + region + "' " +
+                            "ORDER BY Population DESC " +
+                            "LIMIT " + n;
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            ArrayList<Country> countries = new ArrayList<>();
+
+            // Populate the array
+            while (rset.next()) {
+                Country country = new Country();
+                country.country_code = rset.getString("Code");
+                country.country_name = rset.getString("Name");
+                country.country_population = rset.getInt("Population");
+
+                countries.add(country);
+            }
+            return countries;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country list. Report 19");
             return null;
         }
     }
