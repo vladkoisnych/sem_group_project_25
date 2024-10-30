@@ -20,19 +20,38 @@ public class ReportsTest
     }
 
     @Test
-    void report14TestSize()
+    void displayCityNull()
     {
-        ArrayList<Country> test14 = app.report14();
-        System.out.println(test14.size());
-        System.out.println(test14.size() == 239);
+        app.displayCity(null);
     }
 
     @Test
-    void report15TestSize()
+    void displayCityNotNull()
     {
-        ArrayList<Country> test15 = app.report15();
-        System.out.println(test15.size());
-        System.out.println(test15.size() == 46);
+        City city = new City();
+        city.city_id = 1;
+        city.city_name = "TestCity";
+        city.city_population = 1;
+        app.displayCity(city);
     }
+
+    @Test
+    void printCountryListNull()
+    {
+        app.printCountryList(null);
+    }
+
+    @Test
+    void printCountryListNotNull()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        Country country = new Country();
+        country.country_code = "TST";
+        country.country_name = "Test";
+        country.country_population = 1111;
+        countries.add(country);
+        app.printCountryList(countries);
+    }
+
 
 }
