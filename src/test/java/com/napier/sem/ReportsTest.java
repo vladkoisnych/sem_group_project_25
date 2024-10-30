@@ -17,8 +17,6 @@ public class ReportsTest
     static void init()
     {
         app = new App();
-
-        app.connect();
     }
 
     @Test
@@ -37,8 +35,4 @@ public class ReportsTest
         System.out.println(test15.size() == 46);
     }
 
-    @AfterAll
-    static void end(){
-        app.disconnect();
-    }
 }
