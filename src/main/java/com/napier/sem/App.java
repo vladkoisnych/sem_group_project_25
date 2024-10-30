@@ -178,6 +178,34 @@ public class App {
     }
 
     /**
+     * * printCountryList function
+     * * printing the details of a country list,
+     * * created for testing purposes while implementing unit testing
+     * * @param countries - array list filled with countries
+     * */
+    public void printCountryList(ArrayList<Country> countries)
+    {
+        if (countries == null){
+            System.out.println("No countries");
+            return;
+        }
+
+
+        if (!countries.isEmpty()) {
+            for (Country country : countries) {
+
+                if (country == null) continue;
+
+                String countryStr = new String();
+                countryStr += "Code: " + country.country_code + "\n";
+                countryStr += "Name: " + country.country_name + "\n";
+                countryStr += "Population: " + country.country_population;
+                System.out.println(countryStr);
+            }
+        }else System.out.println("Country list is empty");
+    }
+
+    /**
      * * report14 function
      * * returning all the countries in the world organised by largest population to smallest,
      * * created for report 14.
