@@ -1,0 +1,20 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+
+:organisation: as User
+
+rectangle Database
+
+usecase UC1 as "Produce a Region
+Population Report"
+
+usecase Use as "Generate report"
+
+usecase Display as "Display report"
+
+User -> UC1
+UC1 --> Use
+Use - Database
+Use --> Display
+
+@enduml
