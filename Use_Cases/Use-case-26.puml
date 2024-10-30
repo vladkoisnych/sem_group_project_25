@@ -1,0 +1,22 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+
+:organisation: as User
+
+rectangle Database
+
+usecase UC1 as "Get a list
+of a size given by the user of cities
+in a continent
+from largest to smallest population"
+
+usecase Use as "Generate report"
+
+usecase Display as "Display report"
+
+User -> UC1
+UC1 --> Use
+Use - Database
+Use --> Display
+
+@enduml

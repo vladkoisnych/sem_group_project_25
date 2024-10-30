@@ -1,0 +1,23 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+
+:organisation: as User
+
+rectangle Database
+
+usecase UC1 as "Get a list
+of the people who speak the following
+languages from greatest number to smallest
+including the percentage of the world
+population. (Chinese,English,Hindi,Spanish,Arabic)"
+
+usecase Use as "Generate report"
+
+usecase Display as "Display report"
+
+User -> UC1
+UC1 --> Use
+Use - Database
+Use --> Display
+
+@enduml
