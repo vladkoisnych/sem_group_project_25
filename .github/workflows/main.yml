@@ -14,13 +14,8 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
       - name: Unit Tests
-        run: mvn -Dtest=com.napier.sem.ReportsTest test
+        run: mvn -Dtest=com.napier.sem.UnitTest test
       - name: Package and Run docker compose
         run: |
           mvn package -DskipTests
           docker compose up --abort-on-container-exit
-        #setting up a docker network so it works
-      #- name: Build with Maven
-      #  run: mvn package
-      #- name: Run docker compose
-      #  run: docker compose up --abort-on-container-exit
