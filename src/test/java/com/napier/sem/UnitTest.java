@@ -73,18 +73,4 @@ public class UnitTest
         app.disconnect();
     }
 
-
-    //unit test for report 14. Does not work as the unit tests can't connect to the DB
-    @Test
-    void report14Test()
-    {
-        System.out.println("\n");
-
-        app.connect();
-        ArrayList<Country> countries14 = app.report14();
-        System.out.println("Report 14 size: " + countries14.size());
-        app.disconnect();
-    }
-
-
 }
