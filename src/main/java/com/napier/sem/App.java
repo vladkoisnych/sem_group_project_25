@@ -51,6 +51,9 @@ public class App {
         ArrayList<Country> countries19 = a.report19(region, N);
         System.out.println("Report 19 size: " + countries19.size());
 
+        // report 21
+        ArrayList<City> cities21 = a.report21();
+        System.out.println("Report 21 size: " + cities21.size());
 
         // Disconnect from database
         a.disconnect();
@@ -169,7 +172,7 @@ public class App {
      * * created for testing purposes while implementing sql connection
      * * @param city - city object
      * */
-    public void displayCity(City city)
+    public static void displayCity(City city)
     {
         if (city != null)
         {
@@ -186,7 +189,7 @@ public class App {
      * * created for testing purposes while implementing unit testing
      * * @param countries - array list filled with countries
      * */
-    public void printCountryList(ArrayList<Country> countries)
+    public static void printCountryList(ArrayList<Country> countries)
     {
         if (countries == null){
             System.out.println("No countries");
@@ -454,6 +457,39 @@ public class App {
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get country list. Report 19");
+            return null;
+        }
+    }
+
+    public ArrayList<City> report21() {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.ID, city.Name, city.Population " +
+                            "FROM country " +
+                            "JOIN city ON Code = city.CountryCode " +
+                            "WHERE continent = 'europe' " +
+                            "ORDER BY Population DESC ";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            ArrayList<City> cities = new ArrayList<>();
+
+            // Populate the array
+            while (rset.next()) {
+                City city = new City();
+                city.city_id = rset.getInt("ID");
+                city.city_name = rset.getString("Name");
+                city.city_population = rset.getInt("Population");
+
+                cities.add(city);
+            }
+            return cities;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get city list. Report 21");
             return null;
         }
     }
