@@ -55,6 +55,10 @@ public class App {
         ArrayList<City> cities21 = a.report21();
         System.out.println("Report 21 size: " + cities21.size());
 
+        // report 61
+        ArrayList<Country> countries61 = a.report61();
+        System.out.println("Report 61 size: " + countries61.size());
+
         // Disconnect from database
         a.disconnect();
     }
@@ -493,5 +497,42 @@ public class App {
             return null;
         }
     }
+    /**
+     * * report61 function
+     * * returning all the countries in the world organized by largest population to smallest,
+     * * created for Report 61.
+     * */
+    public ArrayList<Country> report61() {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT Code, Name, Population, continent " +
+                            "FROM country " +
+                            "ORDER BY Population DESC";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            ArrayList<Country> countries = new ArrayList<>();
+
+            // Populate the array
+            while (rset.next()) {
+                Country country = new Country();
+                country.country_code = rset.getString("Code");
+                country.country_name = rset.getString("Name");
+                country.country_population = rset.getInt("Population");
+                country.country_continent = rset.getString("continent");
+
+                countries.add(country);
+            }
+            return countries;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country list. Report 61");
+            return null;
+        }
+    }
+
 }
 
