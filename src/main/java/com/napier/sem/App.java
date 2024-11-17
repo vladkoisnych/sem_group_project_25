@@ -55,6 +55,11 @@ public class App {
         ArrayList<City> cities21 = a.report21();
         System.out.println("Report 21 size: " + cities21.size());
 
+        // report 31
+        continent = "Europe"; // Specify the continent
+        ArrayList<City> cities31 = a.report31(continent);
+        System.out.println("Report 31 size: " + cities31.size());
+
         // report 61
         ArrayList<Country> countries61 = a.report61();
         System.out.println("Report 61 size: " + countries61.size());
@@ -465,6 +470,12 @@ public class App {
         }
     }
 
+
+    /**
+     * * report21 function
+     * * returning all the cities in a continent organized by largest population to smallest,
+     * * created for Report 21.
+     * */
     public ArrayList<City> report21() {
         try {
             // Create an SQL statement
@@ -475,7 +486,7 @@ public class App {
                             "FROM country " +
                             "JOIN city ON Code = city.CountryCode " +
                             "WHERE continent = 'europe' " +
-                            "ORDER BY Population DESC ";
+                            "ORDER BY city.Population DESC ";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
@@ -497,6 +508,45 @@ public class App {
             return null;
         }
     }
+
+    /**
+     * * report31 function
+     * * returning all the capital cities in a continent organized by largest population to smallest,
+     * * created for Report 31.
+     * */
+    public ArrayList<City> report31(String continent) {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.ID, city.Name, city.Population " +
+                            "FROM country " +
+                            "JOIN city ON Code = city.CountryCode " +
+                            "WHERE continent = '" + continent + "' and city.ID = Capital " +
+                            "ORDER BY city.Population DESC ";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            ArrayList<City> cities = new ArrayList<>();
+
+            // Populate the array
+            while (rset.next()) {
+                City city = new City();
+                city.city_id = rset.getInt("ID");
+                city.city_name = rset.getString("Name");
+                city.city_population = rset.getInt("Population");
+
+                cities.add(city);
+            }
+            return cities;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get city list. Report 31");
+            return null;
+        }
+    }
+
     /**
      * * report61 function
      * * returning all the countries in the world organized by largest population to smallest,
