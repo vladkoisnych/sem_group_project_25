@@ -55,6 +55,10 @@ public class App {
         ArrayList<City> cities21 = a.report21();
         System.out.println("Report 21 size: " + cities21.size());
 
+        // report 30
+        ArrayList<City> cities30 = a.report30();
+        System.out.println("Report 30 size: " + cities30.size());
+
         // report 31
         continent = "Europe"; // Specify the continent
         ArrayList<City> cities31 = a.report31(continent);
@@ -508,6 +512,45 @@ public class App {
             return null;
         }
     }
+
+    /**
+     * * report30 function
+     * * returning all the capital cities in the world organized by largest population to smallest,
+     * * created for Report 30
+     * */
+    public ArrayList<City> report30() {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.ID, city.Name, city.Population " +
+                            "FROM country " +
+                            "JOIN city ON Code = city.CountryCode " +
+                            "WHERE city.ID = Capital " +
+                            "ORDER BY city.Population DESC ";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            ArrayList<City> cities = new ArrayList<>();
+
+            // Populate the array
+            while (rset.next()) {
+                City city = new City();
+                city.city_id = rset.getInt("ID");
+                city.city_name = rset.getString("Name");
+                city.city_population = rset.getInt("Population");
+
+                cities.add(city);
+            }
+            return cities;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get city list. Report 30");
+            return null;
+        }
+    }
+
 
     /**
      * * report31 function
