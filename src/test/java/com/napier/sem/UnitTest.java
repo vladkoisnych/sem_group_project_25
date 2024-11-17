@@ -68,7 +68,7 @@ public class UnitTest
     {
         System.out.println("\n");
 
-        app.connect();
+        app.connect("localhost:33060", 10000);
 
         app.disconnect();
     }
