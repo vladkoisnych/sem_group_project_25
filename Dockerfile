@@ -1,5 +1,5 @@
 # this is a dockerfile with a link to the latest release jar file
 FROM openjdk:latest
-COPY ./target/seMethods.jar /tmp
+COPY ./target/groupProject25.jar /tmp
 WORKDIR /tmp
-ENTRYPOINT ["java", "-jar", "seMethods.jar", "db:3306", "10000"]
+ENTRYPOINT ["java", "-jar", "groupProject25.jar", "db:3306", "10000"]

@@ -13,14 +13,18 @@ public class UnitTest
 {
     static App app;
 
-    //initialisation method to launch the app class.
+    /**
+     * Initialisation method to launch the app class.
+     */
     @BeforeAll
     static void init()
     {
         app = new App();
     }
 
-    //unit test to print an empty city.
+    /**
+     * Unit test to print an empty city.
+     */
     @Test
     void displayCityNull()
     {
@@ -28,7 +32,10 @@ public class UnitTest
         app.displayCity(null);
     }
 
-    //unit test to print a city that is not empty.
+
+    /**
+     * Unit test to print a city that is not empty.
+     */
     @Test
     void displayCityNotNull()
     {
@@ -40,7 +47,9 @@ public class UnitTest
         app.displayCity(city);
     }
 
-    //unit test to print an empty country list.
+    /**
+     * Unit test to print an empty country list.
+     */
     @Test
     void printCountryListNull()
     {
@@ -48,7 +57,9 @@ public class UnitTest
         app.printCountryList(null);
     }
 
-    //unit test to print a country list that is not empty.
+    /**
+     * Unit test to print a country list that is not empty.
+     */
     @Test
     void printCountryListNotNull()
     {
@@ -60,17 +71,6 @@ public class UnitTest
         countries.add(country);
         System.out.println("\n");
         app.printCountryList(countries);
-    }
-
-    //unit test for connecting to the DB. Does not work as the unit tests can't have any connections
-    @Test
-    void connectingToTheDB()
-    {
-        System.out.println("\n");
-
-        app.connect("localhost:33060", 10000);
-
-        app.disconnect();
     }
 
 }

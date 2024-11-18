@@ -93,7 +93,7 @@ public class App {
             System.exit(-1);
         }
 
-        int retries = 10;
+        int retries = 3;
         boolean shouldWait = false;
         for (int i = 0; i < retries; ++i) {
             System.out.println("Connecting to database...");
@@ -104,8 +104,7 @@ public class App {
                 }
 
                 // Connect to database
-                con = DriverManager.getConnection("jdbc:mysql://" + location
-                                + "/world?useSSL=false",
+                con = DriverManager.getConnection("jdbc:mysql://" + location + "/world?allowPublicKeyRetrieval=true&useSSL=false",
                         "root", "example");
                 System.out.println("Successfully connected");
                 break;
