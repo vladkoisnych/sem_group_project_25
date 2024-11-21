@@ -73,6 +73,11 @@ public class App {
         ArrayList<Country> countries61 = a.report61();
         System.out.println("Report 61 size: " + countries61.size());
 
+        // report 22
+        region = "Western Europe"; // Specify the region
+        ArrayList<City> cities22 = a.report22(region);
+        System.out.println("Report 22 size: " + cities22.size());
+
         // Disconnect from database
         a.disconnect();
     }
@@ -631,6 +636,42 @@ public class App {
             return null;
         }
     }
+    /**
+     * * report22 function
+     * * returning all the cities in a region organized by largest population to smallest,
+     * * created for Report 22.
+     * */
+    public ArrayList<City> report22(String region) {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.ID, city.Name, city.Population " +
+                            "FROM country " +
+                            "JOIN city ON Code = city.CountryCode " +
+                            "WHERE region = '" + region + "' " +
+                            "ORDER BY city.Population DESC ";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
 
+            ArrayList<City> cities = new ArrayList<>();
+
+            // Populate the array
+            while (rset.next()) {
+                City city = new City();
+                city.city_id = rset.getInt("ID");
+                city.city_name = rset.getString("Name");
+                city.city_population = rset.getInt("Population");
+
+                cities.add(city);
+            }
+            return cities;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get city list. Report 22");
+            return null;
+        }
+    }
 }
 
