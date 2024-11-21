@@ -25,7 +25,7 @@ public class App {
         }
 
         //release version
-        System.out.println("Release 0.1.0.3");
+        System.out.println("Release 0.1.0.4");
 
         //report 14
         ArrayList<Country> countries14 = a.report14();
