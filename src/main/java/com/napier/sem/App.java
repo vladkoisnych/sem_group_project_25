@@ -40,19 +40,20 @@ public class App {
         System.out.println("Report 16 size: " + countries16.size());
 
         //report 17
-        ArrayList<Country> countries17 = a.report17(10);
+        int n = 10; // Specify the top N countries
+        ArrayList<Country> countries17 = a.report17(n);
         System.out.println("Report 17 size: " + countries17.size());
 
         // report 18
         String continent = "Europe"; // Specify the continent
-        int N = 10; // Specify the top N countries
-        ArrayList<Country> countries18 = a.report18(continent, N);
+        n = 10; // Specify the top N countries
+        ArrayList<Country> countries18 = a.report18(continent, n);
         System.out.println("Report 18 size: " + countries18.size());
 
         // report 19
         String region = "Western Europe"; // Specify the region
-        N = 5; // Specify the top N countries
-        ArrayList<Country> countries19 = a.report19(region, N);
+        n = 5; // Specify the top N countries
+        ArrayList<Country> countries19 = a.report19(region, n);
         System.out.println("Report 19 size: " + countries19.size());
 
         // report 21
@@ -225,6 +226,8 @@ public class App {
             }
         }else System.out.println("Country list is empty");
     }
+
+
 
     /**
      * * report14 function
