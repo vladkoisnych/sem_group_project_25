@@ -36,7 +36,7 @@ jobs:
         with:
           java-version: '17'
           distribution: 'adopt'
-      - name: Integration Tests
+      - name: Integration Tests and CodeCov
         run: |
           docker build -t database ./db 
           docker run --name world -dp 33060:3306 database
@@ -44,6 +44,14 @@ jobs:
           docker stop world
           docker rm world
           docker image rm database
+      - name: CodeCov
+        uses: codecov/codecov-action@v4.0.1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }} # now required for public repos too
+          directory: ./target/site/jacoco
+          flags: Integration Tests # optional
+          verbose: true # optional (default = false)
+          slug: vladkoisnych/sem_group_project_25
 
 
   build:
