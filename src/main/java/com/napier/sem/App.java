@@ -788,30 +788,23 @@ public class App {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT Code " +
+                    "SELECT city.ID, city.Name, city.Population " +
                             "FROM country " +
-                            "WHERE country.Name = '" + country + "' ";
-            // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
-
-            String countryCode = rset.getString("Code");
-
-            String strSelect2 =
-                    "SELECT Name, ID, Population " +
-                            "FROM city " +
-                            "WHERE city.CountryCode = '" + countryCode + "' " +
+                            "JOIN city ON Code = city.CountryCode " +
+                            "WHERE country.Name = '" + country + "' " +
+                            "ORDER BY city.Population DESC "+
                             "LIMIT " + n;
             // Execute SQL statement
-            ResultSet rset2 = stmt.executeQuery(strSelect2);
+            ResultSet rset = stmt.executeQuery(strSelect);
 
             ArrayList<City> cities = new ArrayList<>();
 
             // Populate the array
-            while (rset2.next()) {
+            while (rset.next()) {
                 City city = new City();
-                city.city_id = rset2.getInt("ID");
-                city.city_name = rset2.getString("Name");
-                city.city_population = rset2.getInt("Population");
+                city.city_id = rset.getInt("ID");
+                city.city_name = rset.getString("Name");
+                city.city_population = rset.getInt("Population");
 
                 cities.add(city);
             }

@@ -145,4 +145,57 @@ public class IntegrationTest
         assertEquals(239, countries61.size());
         System.out.println("\nReport 61 works correct");
     }
+
+    /**
+     * Testing the report22 function, comparing with known answer
+     */
+    @Test
+    void testReport22() {
+        String region = "Western Europe";
+        ArrayList<City> cities22 = app.report22(region);
+        assertEquals(186, cities22.size());
+    }
+
+    /**
+     * Testing the report23 function, comparing with known answer
+     */
+    @Test
+    void testReport23() {
+        String country = "Germany";
+        ArrayList<City> cities23 = app.report23(country);
+        assertEquals(93, cities23.size());
+    }
+
+    /**
+     * Testing the report24 function, comparing with known answer
+     */
+    @Test
+    void testReport24() {
+        String district = "Buenos Aires";
+        ArrayList<City> cities24 = app.report24(district);
+        assertEquals(31, cities24.size());
+    }
+
+    /**
+     * Testing the report28 function, comparing with known answer
+     */
+    @Test
+    void testReport28() {
+        String country = "Germany";
+        int n = 10;
+        ArrayList<City> cities28 = app.report28(country, n);
+        assertEquals(10, cities28.size());
+    }
+
+    /**
+     * Testing the report34 function, comparing with known answer
+     */
+    @Test
+    void testReport34() {
+        String continent = "Asia";
+        int n = 5;
+        ArrayList<City> topCapitalCities = app.report34(continent, n);
+        assertEquals(5, topCapitalCities.size());
+    }
+
 }
