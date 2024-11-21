@@ -1,0 +1,23 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+
+:organisation: as User
+
+rectangle clientside
+
+rectangle System{
+
+   usecase UC1 as "Web-Server"
+
+   usecase Use as "Database"
+
+   usecase Display as "Display report"
+}
+
+clientside -right-> UC1
+User -down-> clientside : Request report
+UC1 --> Use
+Display -left-> clientside
+Use --> Display
+
+@enduml
