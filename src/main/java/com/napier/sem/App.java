@@ -692,7 +692,7 @@ public class App {
                     "SELECT city.ID, city.Name, city.Population " +
                             "FROM country " +
                             "JOIN city ON Code = city.CountryCode " +
-                            "WHERE Name = '" + country + "' " +
+                            "WHERE country.Name = '" + country + "' " +
                             "ORDER BY city.Population DESC ";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
