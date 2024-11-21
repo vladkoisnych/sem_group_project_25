@@ -83,6 +83,11 @@ public class App {
         ArrayList<City> cities23 = a.report23(country);
         System.out.println("Report 23 size: " + cities23.size());
 
+        // report 24
+        String district = "Buenos Aires"; // Specify the district
+        ArrayList<City> cities24 = a.report24(district);
+        System.out.println("Report 24 size: " + cities24.size());
+
         // Disconnect from database
         a.disconnect();
     }
@@ -712,6 +717,44 @@ public class App {
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get city list. Report 23");
+            return null;
+        }
+    }
+
+    /**
+     * * report24 function
+     * * returning all the cities in a district organized by largest population to smallest,
+     * * created for Report 24.
+     * */
+    public ArrayList<City> report24(String district) {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.ID, city.Name, city.Population " +
+                            "FROM country " +
+                            "JOIN city ON Code = city.CountryCode " +
+                            "WHERE District = '" + district + "' " +
+                            "ORDER BY city.Population DESC ";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            ArrayList<City> cities = new ArrayList<>();
+
+            // Populate the array
+            while (rset.next()) {
+                City city = new City();
+                city.city_id = rset.getInt("ID");
+                city.city_name = rset.getString("Name");
+                city.city_population = rset.getInt("Population");
+
+                cities.add(city);
+            }
+            return cities;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get city list. Report 24");
             return null;
         }
     }
