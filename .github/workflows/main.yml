@@ -44,14 +44,14 @@ jobs:
           docker stop world
           docker rm world
           docker image rm database
-      - name: CodeCov
-        uses: codecov/codecov-action@v4.0.1
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }} # now required for public repos too
-          directory: ./target/site/jacoco
-          flags: Integration Tests # optional
-          verbose: true # optional (default = false)
-          slug: vladkoisnych/sem_group_project_25
+#      - name: CodeCov
+#        uses: codecov/codecov-action@v4.0.1
+#        with:
+#          token: ${{ secrets.CODECOV_TOKEN }} # now required for public repos too
+#          directory: ./target/site/jacoco
+#          flags: Integration Tests # optional
+#          verbose: true # optional (default = false)
+#          slug: vladkoisnych/sem_group_project_25
 
 
   build:
