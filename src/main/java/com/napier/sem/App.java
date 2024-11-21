@@ -95,10 +95,10 @@ public class App {
         System.out.println("Report 28 size: " + cities28.size());
 
 
-        // repport 34
+        // report 34
         continent = "Asia"; // Specify the continent
         n = 5; // Specify the top N populated capital cities
-        ArrayList<City> topCapitalCities = a.report36(continent, n);
+        ArrayList<City> topCapitalCities = a.report34(continent, n);
         System.out.println("Report 34 size: " + topCapitalCities.size());
 
 
@@ -778,9 +778,9 @@ public class App {
 
     /**
      * * report28 function
-     * * returning the top N populated countries in a country, where N is provided by the user
+     * * returning the top N populated cities in a country, where N is provided by the user
      * * created for report 28.
-     * * @param n - n populated countries in the world, is provided by the user
+     * * @param n - n populated city in the world, is provided by the user
      * */
     public ArrayList<City> report28(String country, int n) {
         try {
@@ -788,22 +788,30 @@ public class App {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT Code, Name, Population " +
+                    "SELECT Code " +
                             "FROM country " +
-                            "WHERE country.Name = '" + country + "' " +
-                            "ORDER BY Population DESC " +
-                            "LIMIT " + n;
+                            "WHERE country.Name = '" + country + "' ";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
+
+            String countryCode = rset.getString("Code");
+
+            String strSelect2 =
+                    "SELECT Name, ID, Population " +
+                            "FROM city " +
+                            "WHERE city.CountryCode = '" + countryCode + "' " +
+                            "LIMIT " + n;
+            // Execute SQL statement
+            ResultSet rset2 = stmt.executeQuery(strSelect2);
 
             ArrayList<City> cities = new ArrayList<>();
 
             // Populate the array
-            while (rset.next()) {
+            while (rset2.next()) {
                 City city = new City();
-                city.city_id = rset.getInt("ID");
-                city.city_name = rset.getString("Name");
-                city.city_population = rset.getInt("Population");
+                city.city_id = rset2.getInt("ID");
+                city.city_name = rset2.getString("Name");
+                city.city_population = rset2.getInt("Population");
 
                 cities.add(city);
             }
@@ -814,7 +822,16 @@ public class App {
             return null;
         }
     }
-    public ArrayList<City> report36(String continent, int n) {
+
+
+    /**
+     * * report34 function
+     * * returning the top N populated capital cities in a continent, where N  and continent is provided by the user
+     * * created for report 34.
+     * * @param n - n populated city in the world, is provided by the user
+     * * @param continent - target continent, provided by the user
+     * */
+    public ArrayList<City> report34(String continent, int n) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
