@@ -112,6 +112,12 @@ public class App {
         ArrayList<City> cities32 = a.report32(region);
         System.out.println("Report 32 size: " + cities32.size());
 
+        // report 35
+        region = "Western Europe"; // Specify the region
+        n = 5; //specify top N cities
+        ArrayList<City> cities35 = a.report35(region, n);
+        System.out.println("Report 35 size: " + cities35.size());
+
 
 
         // Disconnect from database
@@ -910,8 +916,8 @@ public class App {
 
     /**
      * * report32 function
-     * * returning all capital cities in a region organised from largest population to smallest
-     * * created for report 29.
+     * * returning all capital cities in a region organised from the largest population to smallest
+     * * created for report 32.
      * * @param n - n populated city in a district, is provided by the user
      * */
     public ArrayList<City> report32(String region) {
@@ -943,6 +949,46 @@ public class App {
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get city list. Report 32");
+            return null;
+        }
+    }
+
+    /**
+     * * report35 function
+     * * returning the top N capital cities in a region organised from the largest population to smallest
+     * * created for report 35.
+     * * @param n - n populated city in a district, is provided by the user
+     * */
+    public ArrayList<City> report35(String region, int N ) {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.ID, city.Name, city.Population " +
+                            "FROM country " +
+                            "JOIN city ON Code = city.CountryCode " +
+                            "WHERE region = '" + region + "' and city.ID = Capital " +
+                            "ORDER BY city.Population DESC " +
+                            "Limit " + N;
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            ArrayList<City> cities = new ArrayList<>();
+
+            // Populate the array
+            while (rset.next()) {
+                City city = new City();
+                city.city_id = rset.getInt("ID");
+                city.city_name = rset.getString("Name");
+                city.city_population = rset.getInt("Population");
+
+                cities.add(city);
+            }
+            return cities;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get city list. Report 35");
             return null;
         }
     }
