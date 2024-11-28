@@ -107,6 +107,11 @@ public class App {
         ArrayList<City> cities29 = a.report29(district, n);
         System.out.println("Report 29 size: " + cities29.size());
 
+        // report 32
+        region = "Western Europe"; // Specify the region
+        ArrayList<City> cities32 = a.report32(region);
+        System.out.println("Report 32 size: " + cities32.size());
+
 
 
         // Disconnect from database
@@ -902,5 +907,45 @@ public class App {
             return null;
         }
     }
+
+    /**
+     * * report32 function
+     * * returning all capital cities in a region organised from largest population to smallest
+     * * created for report 29.
+     * * @param n - n populated city in a district, is provided by the user
+     * */
+    public ArrayList<City> report32(String region) {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.ID, city.Name, city.Population " +
+                            "FROM country " +
+                            "JOIN city ON Code = city.CountryCode " +
+                            "WHERE region = '" + region + "' and city.ID = Capital " +
+                            "ORDER BY city.Population DESC ";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            ArrayList<City> cities = new ArrayList<>();
+
+            // Populate the array
+            while (rset.next()) {
+                City city = new City();
+                city.city_id = rset.getInt("ID");
+                city.city_name = rset.getString("Name");
+                city.city_population = rset.getInt("Population");
+
+                cities.add(city);
+            }
+            return cities;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get city list. Report 32");
+            return null;
+        }
+    }
+
 }
 
