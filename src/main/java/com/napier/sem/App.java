@@ -120,10 +120,12 @@ public class App {
 
 
         // report 38
-
         ArrayList<Country> countries38 = a.report38();
         System.out.println("Report 38 size: " + countries38.size());
 
+        // report 38
+        ArrayList<Country> countries49 = a.report49();
+        System.out.println("Report 49 size: " + countries49.size());
 
 
         // Disconnect from database
@@ -1038,6 +1040,42 @@ public class App {
             return null;
         }
     }
+
+    /**
+     * * report49 function
+     * * returning the population of the world
+     * * created for report 49.
+     * */
+    public ArrayList<Country> report49() {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT SUM(Population) as pop " +
+                            "FROM country ";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            ArrayList<Country> countries = new ArrayList<>();
+
+            // Populate the array
+            while (rset.next()) {
+                Country country = new Country();
+                country.country_population = (int) rset.getLong("pop");
+
+                countries.add(country);
+                // System.out.println(country.country_population);
+                // System.out.println("report 49 output " + rset.getLong("pop"));
+            }
+            return countries;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country list. Report 49");
+            return null;
+        }
+    }
+
 
 }
 
