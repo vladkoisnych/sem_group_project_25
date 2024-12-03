@@ -132,6 +132,11 @@ public class App {
         ArrayList<Country> countries50 = a.report50(continent);
         System.out.println("Report 50 size: " + countries50.size());
 
+        // report 51
+        region = "Western Europe"; // Specify the region
+        ArrayList<Country> countries51 = a.report51(region);
+        System.out.println("Report 51 size: " + countries51.size());
+
         // Disconnect from database
         a.disconnect();
     }
@@ -1110,6 +1115,40 @@ public class App {
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get country list. Report 50");
+            return null;
+        }
+    }
+
+    /**
+     * * report51 function
+     * * returning the population a region
+     * * created for report 51.
+     * */
+    public ArrayList<Country> report51(String region) {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT SUM(Population) as pop " +
+                            "FROM country " +
+                            "WHERE region = '" + region + "' ";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            ArrayList<Country> countries = new ArrayList<>();
+
+            // Populate the array
+            while (rset.next()) {
+                Country country = new Country();
+                country.country_population = (int) rset.getInt("pop");
+
+                countries.add(country);
+            }
+            return countries;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country list. Report 51");
             return null;
         }
     }
