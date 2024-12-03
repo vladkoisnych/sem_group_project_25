@@ -152,6 +152,11 @@ public class App {
         Country country56 = a.report56(country);
         printCountryDetails(country56);
 
+        //report 57
+        city = "Edinburgh";
+        City city57 = a.report57(city);
+        printCityDetails(city57);
+
 
         // Disconnect from database
         a.disconnect();
@@ -308,10 +313,10 @@ public class App {
     }
 
     /**
-     * * printCountryList function
-     * * printing the details of a country list,
+     * * printCountryDetails function
+     * * printing the details of a country,
      * * created for testing purposes while implementing unit testing
-     * * @param countries - array list filled with countries
+     * * @param country
      * */
     public static void printCountryDetails(Country country)
     {
@@ -328,6 +333,32 @@ public class App {
             System.out.println(countryStr);
         }else {
             System.out.println("No country");
+            return;
+        }
+
+    }
+
+    /**
+     * * printCityDetails function
+     * * printing the details of a city,
+     * * created for testing purposes while implementing unit testing
+     * * @param city
+     * */
+    public static void printCityDetails(City city)
+    {
+        if (city != null) {
+            String cityStr = new String();
+
+            cityStr += "ID: " + city.city_id + "\n";
+            cityStr += "Name: " + city.city_name + "\n";
+            cityStr += "Country: " + city.city_countryCode + "\n";
+            cityStr += "District: " + city.city_district + "\n";
+            cityStr += "Population: " + city.city_population;
+
+
+            System.out.println(cityStr);
+        }else {
+            System.out.println("No city");
             return;
         }
 
@@ -1225,7 +1256,7 @@ public class App {
 
     /**
      * * report54 function
-     * * returning the population of a country
+     * * returning the population of a city
      * * created for report 54.
      * */
     public ArrayList<City> report54(String name) {
@@ -1294,6 +1325,47 @@ public class App {
         {
             System.out.println(e.getMessage());
             System.out.println("Failed to get country details");
+            return null;
+        }
+    }
+
+    /**
+     * * report57 function
+     * * returning the information of a city
+     * * created for report 57.
+     * */
+    public City report57(String name)
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT ID, Name, CountryCode , District, Population "
+                            + "FROM city "
+                            + "WHERE Name = '" + name + "' ";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Return new city if valid.
+            // Check one is returned
+            if (rset.next())
+            {
+                City city = new City();
+                city.city_id = rset.getInt("ID");
+                city.city_name = rset.getString("Name");
+                city.city_countryCode = rset.getString("CountryCode");
+                city.city_district = rset.getString("District");
+                city.city_population = rset.getInt("Population");
+                return city;
+            }
+            else
+                return null;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get city details");
             return null;
         }
     }
