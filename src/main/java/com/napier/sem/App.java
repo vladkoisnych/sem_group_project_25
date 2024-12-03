@@ -157,6 +157,11 @@ public class App {
         City city57 = a.report57(city);
         printCityDetails(city57);
 
+        //report 58
+        city = "London";
+        City city58 = a.report58(city);
+        printCityDetails(city58);
+
 
         // Disconnect from database
         a.disconnect();
@@ -1345,6 +1350,48 @@ public class App {
                     "SELECT ID, Name, CountryCode , District, Population "
                             + "FROM city "
                             + "WHERE Name = '" + name + "' ";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Return new city if valid.
+            // Check one is returned
+            if (rset.next())
+            {
+                City city = new City();
+                city.city_id = rset.getInt("ID");
+                city.city_name = rset.getString("Name");
+                city.city_countryCode = rset.getString("CountryCode");
+                city.city_district = rset.getString("District");
+                city.city_population = rset.getInt("Population");
+                return city;
+            }
+            else
+                return null;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get city details");
+            return null;
+        }
+    }
+
+    /**
+     * * report59 function
+     * * returning the information of a capital city
+     * * created for report 58.
+     * */
+    public City report58(String name)
+    {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.ID, city.Name, city.CountryCode, city.District, city.Population " +
+                            "FROM city " +
+                            "JOIN country ON city.ID = country.Capital " +
+                            "WHERE city.Name = '" + name + "' ";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Return new city if valid.
