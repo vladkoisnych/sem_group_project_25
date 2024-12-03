@@ -137,6 +137,11 @@ public class App {
         ArrayList<Country> countries51 = a.report51(region);
         System.out.println("Report 51 size: " + countries51.size());
 
+        // report 29
+        district = "Buenos Aires"; // Specify the district
+        ArrayList<City> cities53 = a.report53(district);
+        System.out.println("Report 53 size: " + cities53.size());
+
         // Disconnect from database
         a.disconnect();
     }
@@ -1121,7 +1126,7 @@ public class App {
 
     /**
      * * report51 function
-     * * returning the population a region
+     * * returning the population of a region
      * * created for report 51.
      * */
     public ArrayList<Country> report51(String region) {
@@ -1149,6 +1154,39 @@ public class App {
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get country list. Report 51");
+            return null;
+        }
+    }
+
+    /**
+     * * report53 function
+     * * returning the population of a district
+     * * created for report 53.
+     * */
+    public ArrayList<City> report53(String district) {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT SUM(Population) as pop " +
+                            "FROM city " +
+                            "WHERE district = '" + district + "' ";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            ArrayList<City> cities = new ArrayList<>();
+
+            // Populate the array
+            while (rset.next()) {
+                City city = new City();
+                city.city_population = (int) rset.getInt("pop");
+                cities.add(city);
+            }
+            return cities;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country list. Report 53");
             return null;
         }
     }
