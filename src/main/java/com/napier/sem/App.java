@@ -147,6 +147,12 @@ public class App {
         ArrayList<City> cities54 = a.report54(city);
         System.out.println("Report 54 size: " + cities54.size());
 
+        //report 56
+        country = "Germany";
+        Country country56 = a.report56(country);
+        printCountryDetails(country56);
+
+
         // Disconnect from database
         a.disconnect();
     }
@@ -230,7 +236,7 @@ public class App {
             String strSelect =
                     "SELECT ID, Name, Population "
                             + "FROM city "
-                            + "WHERE ID = " + ID;
+                            + "WHERE ID = '" + ID + "' ";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
             // Return new city if valid.
@@ -301,7 +307,31 @@ public class App {
         }else System.out.println("Country list is empty");
     }
 
+    /**
+     * * printCountryList function
+     * * printing the details of a country list,
+     * * created for testing purposes while implementing unit testing
+     * * @param countries - array list filled with countries
+     * */
+    public static void printCountryDetails(Country country)
+    {
+        if (country != null) {
+            String countryStr = new String();
 
+            countryStr += "Code: " + country.country_code + "\n";
+            countryStr += "Name: " + country.country_name + "\n";
+            countryStr += "Continent: " + country.country_continent + "\n";
+            countryStr += "Region: " + country.country_region + "\n";
+            countryStr += "Population: " + country.country_population + "\n";
+            countryStr += "CapitalId : " + country.country_capital;
+
+            System.out.println(countryStr);
+        }else {
+            System.out.println("No country");
+            return;
+        }
+
+    }
 
     /**
      * * report14 function
@@ -1222,6 +1252,48 @@ public class App {
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get country list. Report 54");
+            return null;
+        }
+    }
+
+    /**
+     * * report56 function
+     * * returning the information of a country
+     * * created for report 56.
+     * */
+    public Country report56(String name) {
+        try
+        {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT Code, Name, Continent, Region, Population, Capital "
+                            + "FROM country "
+                            + "WHERE name = '" + name + "' ";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+            // Return new country if valid.
+            // Check one is returned
+            if (rset.next())
+            {
+                Country country = new Country();
+                country.country_code = rset.getString("Code");
+                country.country_name = rset.getString("Name");
+                country.country_continent = rset.getString("Continent");
+                country.country_region = rset.getString("Region");
+                country.country_population = rset.getInt("Population");
+                country.country_capital = rset.getInt("Capital");
+
+                return country;
+            }
+            else
+                return null;
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country details");
             return null;
         }
     }
