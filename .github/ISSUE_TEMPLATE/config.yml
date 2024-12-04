@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Group Project Bug Reporting
+    url: https://github.com/vladkoisnych/sem_group_project_25/issues
+    about: Please report any found errors or bugs here.
