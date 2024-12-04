@@ -1376,7 +1376,7 @@ public class App {
     }
 
     /**
-     * * report59 function
+     * * report58 function
      * * returning the information of a capital city
      * * created for report 58.
      * */
