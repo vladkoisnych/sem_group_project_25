@@ -1648,22 +1648,36 @@ public class App {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT country.Continent AS Continent, SUM(city.Population) AS cities, (country.Population-SUM(city.Population)) AS other  , SUM(country.Population) AS total.population" +
-                            "FROM country " +
-                            "JOIN city ON country.Code= city.CountryCode " +
-                            "GROUP By country.Continent";
+                    "SELECT " +
+                            "    Continent, " +
+                            "    SUM(cities_population) AS cities, " +
+                            "    SUM(total_population - cities_population) AS other, " +
+                            "    SUM(total_population) AS total " +
+                            "FROM (" +
+                            "    SELECT " +
+                            "        country.Continent, " +
+                            "        country.Population AS total_population, " +
+                            "        COALESCE(SUM(city.Population), 0) AS cities_population " +
+                            "    FROM " +
+                            "        country " +
+                            "    LEFT JOIN " +
+                            "        city ON country.Code = city.CountryCode " +
+                            "    GROUP BY " +
+                            "        country.Code" +
+                            ") AS subquery " +
+                            "GROUP BY " +
+                            "    Continent";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
-            System.out.println("\n" + "Continent" + " ");
-            System.out.println("Cities" + "/");
-            System.out.println("Not in cities" + "\n");
+
+
 
             // Populate the array
             while (rset.next()) {
-                System.out.println(rset.getString("Continent") + " ");
-                System.out.println(rset.getInt("cities") + "/");
-                System.out.println(rset.getInt("other") + "\n");
+                System.out.println(rset.getString("Continent"));
+                System.out.println(rset.getLong("cities"));
+                System.out.println(rset.getLong("other"));
 
             }
 
