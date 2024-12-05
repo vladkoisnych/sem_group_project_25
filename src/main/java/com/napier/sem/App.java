@@ -1650,7 +1650,7 @@ public class App {
             String strSelect =
                     "SELECT country.Continent AS Continent, SUM(city.Population) AS cities, (country.Population-SUM(city.Population)) AS other  , SUM(country.population) AS total.population" +
                             "FROM country " +
-                            "LEFT JOIN city ON country.Code= city.CountryCode " +
+                            "JOIN city ON country.Code= city.CountryCode " +
                             "GROUP By country.Continent";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
