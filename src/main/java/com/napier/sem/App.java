@@ -98,8 +98,8 @@ public class App {
         // report 34
         continent = "Asia"; // Specify the continent
         n = 5; // Specify the top N populated capital cities
-        ArrayList<City> topCapitalCities = a.report34(continent, n);
-        System.out.println("Report 34 size: " + topCapitalCities.size());
+                ArrayList<City> topCapitalCities = a.report34(continent, n);
+                System.out.println("Report 34 size: " + topCapitalCities.size());
 
         // report 29
         district = "Buenos Aires"; // Specify the district
@@ -162,6 +162,9 @@ public class App {
         City city58 = a.report58(city);
         printCityDetails(city58);
 
+        // report 20
+        ArrayList<City> cities20 = a.report20();
+        System.out.println("Report 20 size: " + cities20.size());
 
         // Disconnect from database
         a.disconnect();
@@ -946,9 +949,9 @@ public class App {
                             "LIMIT " + n;
 
             // Execute SQL statement
-            ResultSet rset = stmt.executeQuery(strSelect);
+                ResultSet rset = stmt.executeQuery(strSelect);
 
-            ArrayList<City> capitalCities = new ArrayList<>();
+                ArrayList<City> capitalCities = new ArrayList<>();
 
             // Populate the array with capital city data
             while (rset.next()) {
@@ -1417,5 +1420,40 @@ public class App {
         }
     }
 
+    /**
+     * * report20 function
+     * * returning all the cities in the world organized by largest population to smallest,
+     * * created for Report 20.
+     * */
+    public ArrayList<City> report20() {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT ID, Name, Population " +
+                            "FROM city " +
+                            "ORDER BY Population DESC ";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            ArrayList<City> cities = new ArrayList<>();
+
+            // Populate the array
+            while (rset.next()) {
+                City city = new City();
+                city.city_id = rset.getInt("ID");
+                city.city_name = rset.getString("Name");
+                city.city_population = rset.getInt("Population");
+
+                cities.add(city);
+            }
+            return cities;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get city list. Report 20");
+            return null;
+        }
+    }
 }
 
