@@ -167,6 +167,9 @@ public class App {
         ArrayList<Region> regions8 = a.report37();
         System.out.println("Report 38 size: " + region37.size());
 
+        String Country = "Germany"; // Specify the country name
+        Country countryDetails = a.report52(country);
+
         // Disconnect from database
         a.disconnect();
     }
@@ -1408,6 +1411,43 @@ public class App {
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get region population details. Report 37");
+            return null;
+        }
+    }
+
+    /**
+     * * report52 function
+     * * returning the population of a given country
+     * * created for report 52.
+     */
+    public Country report52(String countryName) {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // SQL query to get the population of a country by its name
+            String strSelect =
+                    "SELECT Code, Name, Population " +
+                            "FROM country " +
+                            "WHERE Name = '" + countryName + "' ";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            // Return new country if valid
+            if (rset.next()) {
+                Country country = new Country();
+                country.country_code = rset.getString("Code");
+                country.country_name = rset.getString("Name");
+                country.country_population = rset.getInt("Population");
+
+                return country;
+            } else {
+                return null;  // Country not found
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get country population details for Report 52");
             return null;
         }
     }
