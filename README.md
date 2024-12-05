@@ -50,4 +50,4 @@ This is a repository for the Group Project for the Software Engineering Methods 
 
 
 
-![](https://github.com/vladkoisnych/sem_group_project_25/blob/develop/screenshots/image.jpg?raw=true)
+![](https://github.com/vladkoisnych/sem_group_project_25/blob/feature/final-delivery/screenshots/testimage.jpg?raw=true)
