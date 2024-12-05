@@ -29,123 +29,123 @@ public class App {
 
         //report 14
         ArrayList<Country> countries14 = a.report14();
-        System.out.println("Report 14 size: " + countries14.size());
+        System.out.println("\n" + "Report 14 size: " + countries14.size());
 
         //report 15
         ArrayList<Country> countries15 = a.report15();
-        System.out.println("Report 15 size: " + countries15.size());
+        System.out.println("\n" + "Report 15 size: " + countries15.size());
 
         //report 16
         ArrayList<Country> countries16 = a.report16();
-        System.out.println("Report 16 size: " + countries16.size());
+        System.out.println("\n" + "Report 16 size: " + countries16.size());
 
         //report 17
         int n = 10; // Specify the top N countries
         ArrayList<Country> countries17 = a.report17(n);
-        System.out.println("Report 17 size: " + countries17.size());
+        System.out.println("\n" + "Report 17 size: " + countries17.size());
 
         // report 18
         String continent = "Europe"; // Specify the continent
         n = 10; // Specify the top N countries
         ArrayList<Country> countries18 = a.report18(continent, n);
-        System.out.println("Report 18 size: " + countries18.size());
+        System.out.println("\n" + "Report 18 size: " + countries18.size());
 
         // report 19
         String region = "Western Europe"; // Specify the region
         n = 5; // Specify the top N countries
         ArrayList<Country> countries19 = a.report19(region, n);
-        System.out.println("Report 19 size: " + countries19.size());
+        System.out.println("\n" + "Report 19 size: " + countries19.size());
 
         // report 21
         ArrayList<City> cities21 = a.report21();
-        System.out.println("Report 21 size: " + cities21.size());
+        System.out.println("\n" + "Report 21 size: " + cities21.size());
 
         // report 30
         ArrayList<City> cities30 = a.report30();
-        System.out.println("Report 30 size: " + cities30.size());
+        System.out.println("\n" + "Report 30 size: " + cities30.size());
 
         // report 31
         continent = "Europe"; // Specify the continent
         ArrayList<City> cities31 = a.report31(continent);
-        System.out.println("Report 31 size: " + cities31.size());
+        System.out.println("\n" + "Report 31 size: " + cities31.size());
 
         // report 61
         ArrayList<Country> countries61 = a.report61();
-        System.out.println("Report 61 size: " + countries61.size());
+        System.out.println("\n" + "Report 61 size: " + countries61.size());
 
         // report 22
         region = "Western Europe"; // Specify the region
         ArrayList<City> cities22 = a.report22(region);
-        System.out.println("Report 22 size: " + cities22.size());
+        System.out.println("\n" + "Report 22 size: " + cities22.size());
 
         // report 23
         String country = "Germany"; // Specify the country
         ArrayList<City> cities23 = a.report23(country);
-        System.out.println("Report 23 size: " + cities23.size());
+        System.out.println("\n" + "Report 23 size: " + cities23.size());
 
         // report 24
         String district = "Buenos Aires"; // Specify the district
         ArrayList<City> cities24 = a.report24(district);
-        System.out.println("Report 24 size: " + cities24.size());
+        System.out.println("\n" + "Report 24 size: " + cities24.size());
 
         // report 28
         country = "Germany"; // Specify the district
         n = 10; //specify top N cities
         ArrayList<City> cities28 = a.report28(country, n);
-        System.out.println("Report 28 size: " + cities28.size());
+        System.out.println("\n" + "Report 28 size: " + cities28.size());
 
 
         // report 34
         continent = "Asia"; // Specify the continent
         n = 5; // Specify the top N populated capital cities
         ArrayList<City> topCapitalCities = a.report34(continent, n);
-        System.out.println("Report 34 size: " + topCapitalCities.size());
+        System.out.println("\n" + "Report 34 size: " + topCapitalCities.size());
 
         // report 29
         district = "Buenos Aires"; // Specify the district
         n = 10; //specify top N cities
         ArrayList<City> cities29 = a.report29(district, n);
-        System.out.println("Report 29 size: " + cities29.size());
+        System.out.println("\n" + "Report 29 size: " + cities29.size());
 
         // report 32
         region = "Western Europe"; // Specify the region
         ArrayList<City> cities32 = a.report32(region);
-        System.out.println("Report 32 size: " + cities32.size());
+        System.out.println("\n" + "Report 32 size: " + cities32.size());
 
         // report 35
         region = "Western Europe"; // Specify the region
         n = 5; //specify top N cities
         ArrayList<City> cities35 = a.report35(region, n);
-        System.out.println("Report 35 size: " + cities35.size());
+        System.out.println("\n" + "Report 35 size: " + cities35.size());
 
 
         // report 38
         ArrayList<Country> countries38 = a.report38();
-        System.out.println("Report 38 size: " + countries38.size());
+        System.out.println("\n" + "Report 38 size: " + countries38.size());
 
         // report 49
         ArrayList<Country> countries49 = a.report49();
-        System.out.println("Report 49 size: " + countries49.size());
+        System.out.println("\n" + "Report 49 size: " + countries49.size());
 
         // report 50
         continent = "Europe"; // Specify the continent
         ArrayList<Country> countries50 = a.report50(continent);
-        System.out.println("Report 50 size: " + countries50.size());
+        System.out.println("\n" + "Report 50 size: " + countries50.size());
 
         // report 51
         region = "Western Europe"; // Specify the region
         ArrayList<Country> countries51 = a.report51(region);
-        System.out.println("Report 51 size: " + countries51.size());
+        System.out.println("\n" + "Report 51 size: " + countries51.size());
 
         // report 53
         district = "Buenos Aires"; // Specify the district
         ArrayList<City> cities53 = a.report53(district);
-        System.out.println("Report 53 size: " + cities53.size());
+        System.out.println("\n" + "Report 53 size: " + cities53.size());
 
         // report 54
         String city = "Edinburgh"; // Specify the district
         ArrayList<City> cities54 = a.report54(city);
-        System.out.println("Report 54 size: " + cities54.size());
+        System.out.println("\n" + "Report 54 size: " + cities54.size());
 
         //report 56
         country = "Germany";
@@ -163,12 +163,14 @@ public class App {
         printCityDetails(city58);
 
         //report37
+        //ArrayList<Region> regions37 = a.report37();
+        a.report37();
+        //System.out.println("Report 38 size: " + region37.size());
 
-        ArrayList<Region> regions8 = a.report37();
-        System.out.println("Report 38 size: " + region37.size());
-
+        //report52
         String Country = "Germany"; // Specify the country name
-        Country countryDetails = a.report52(country);
+        int population52 = a.report52(country);
+        System.out.println("\n" + "Population of " + country + " is " + population52);
 
         // Disconnect from database
         a.disconnect();
@@ -276,11 +278,11 @@ public class App {
      */
     public static void displayCity(City city) {
         if (city != null) {
-            System.out.println(
+            System.out.println("\n" +
                     city.city_id + " "
                             + city.city_name + "\n"
                             + city.city_population + "\n");
-        } else System.out.println("City is empty");
+        } else System.out.println("\n" + "City is empty");
     }
 
     /**
@@ -305,9 +307,10 @@ public class App {
                 countryStr += "Code: " + country.country_code + "\n";
                 countryStr += "Name: " + country.country_name + "\n";
                 countryStr += "Population: " + country.country_population;
-                System.out.println(countryStr);
+
+                System.out.println("\n" + countryStr);
             }
-        } else System.out.println("Country list is empty");
+        } else System.out.println("\n" + "Country list is empty");
     }
 
     /**
@@ -327,9 +330,9 @@ public class App {
             countryStr += "Population: " + country.country_population + "\n";
             countryStr += "CapitalId : " + country.country_capital;
 
-            System.out.println(countryStr);
+            System.out.println("\n" + countryStr);
         } else {
-            System.out.println("No country");
+            System.out.println("\n" + "No country");
             return;
         }
 
@@ -352,9 +355,10 @@ public class App {
             cityStr += "Population: " + city.city_population;
 
 
-            System.out.println(cityStr);
+
+            System.out.println("\n" + cityStr);
         } else {
-            System.out.println("No city");
+            System.out.println("\n" + "No city");
             return;
         }
 
@@ -1376,17 +1380,21 @@ public class App {
         }
     }
 
-    public ArrayList<Region> report37() {
+    /**
+     * * report37 function
+     * * returning the population of people, people living in cities, and people not living in cities in each region
+     * * created for report 37.
+     */
+    public void report37() {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
 
             // SQL query to calculate population in cities and outside cities for each region
             String strSelect =
-                    "SELECT country.Region" +
-                            "Region, " +
+                    "SELECT country.Region as Region, " +
                             "SUM(city.Population) AS cities, " +
-                            "(SUM(country.Population) - SUM(city.Population)) AS non_city_population, " +
+                            "(SUM(country.Population) - SUM(city.Population)) AS other, " +
                             "SUM(country.Population) AS total_population " +
                             "FROM country " +
                             "LEFT JOIN city ON country.Code = city.CountryCode " +
@@ -1395,23 +1403,25 @@ public class App {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
-            // Create an ArrayList to store the results
-            ArrayList<Region> regions = new ArrayList<>();
+            //print the template
+            System.out.print("\n" + "Region" + " ");
+            System.out.print("Cities" + "/");
+            System.out.print("Not in Cities" + "\n");
 
-            // Populate the ArrayList with results
+            //print the answers
             while (rset.next()) {
-                System.out.println(rset.getString("Region"));
-                System.out.println(rset.getString("cities"));
-                System.out.println(rset.getString("other"));
+                System.out.print(rset.getString("Region") + " ");
+                System.out.print(rset.getString("cities") + "/");
+                System.out.print(rset.getString("other") + "\n");
 
 
             }
 
-            return regions;
+            //return regions;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get region population details. Report 37");
-            return null;
+            //return null;
         }
     }
 
@@ -1420,7 +1430,7 @@ public class App {
      * * returning the population of a given country
      * * created for report 52.
      */
-    public Country report52(String countryName) {
+    public int report52(String countryName) {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -1434,6 +1444,8 @@ public class App {
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
 
+
+
             // Return new country if valid
             if (rset.next()) {
                 Country country = new Country();
@@ -1441,14 +1453,14 @@ public class App {
                 country.country_name = rset.getString("Name");
                 country.country_population = rset.getInt("Population");
 
-                return country;
+                return country.country_population;
             } else {
-                return null;  // Country not found
+                return 0;  // Country not found
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get country population details for Report 52");
-            return null;
+            return 0;
         }
     }
 }
