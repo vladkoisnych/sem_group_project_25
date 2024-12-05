@@ -178,6 +178,11 @@ public class App {
         ArrayList<City> cities27 = a.report27(region, n);
         System.out.println("Report 27 size: " + cities27.size());
 
+        // report 25
+        n = 5; // Specify the top N populated cities
+        ArrayList<City> cities25 = a.report25(n);
+        System.out.println("Report 25 size: " + cities25.size());
+
         // Disconnect from database
         a.disconnect();
     }
@@ -1545,6 +1550,45 @@ public class App {
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get city list. Report 27");
+            return null;
+        }
+    }
+    /**
+     * * report25 function
+     * * returning the top N populated cities in the world, where N is provided by the user
+     * * created for report 25.
+     * * @param n - n populated city in the world, is provided by the user
+     * */
+    public ArrayList<City> report25(int n) {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement to get the top N populated cities in the world
+            String strSelect =
+                    "SELECT city.ID, city.Name, city.Population " +
+                            "FROM county " +
+                            "JOIN city ON CODE = country.CountryCode " +
+                            "ORDER BY city.Population DESC " +
+                            "LIMIT " + n;
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            ArrayList<City> cities = new ArrayList<>();
+
+            // Populate the array with capital city data
+            while (rset.next()) {
+                City city = new City();
+                city.city_id = rset.getInt("ID");
+                city.city_name = rset.getString("Name");
+                city.city_population = rset.getInt("Population");
+
+                cities.add(city);
+            }
+            return cities;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get cities list. Report 25");
             return null;
         }
     }
