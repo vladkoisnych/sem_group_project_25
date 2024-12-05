@@ -1567,7 +1567,7 @@ public class App {
             String strSelect =
                     "SELECT city.ID, city.Name, city.Population " +
                             "FROM country " +
-                            "JOIN city ON CODE = country.CountryCode " +
+                            "JOIN city ON CODE = city.CountryCode " +
                             "ORDER BY city.Population DESC " +
                             "LIMIT " + n;
 
