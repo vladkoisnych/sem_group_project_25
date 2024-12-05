@@ -187,6 +187,8 @@ public class App {
         n = 5; // Specify the top N populated capital cities
         ArrayList<City> cities33 = a.report33(n);
         System.out.println("Report 33 size: " + cities33.size());
+        //report 36
+        a.report36();
 
         // Disconnect from database
         a.disconnect();
