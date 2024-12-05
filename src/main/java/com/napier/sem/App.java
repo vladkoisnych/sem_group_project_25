@@ -39,14 +39,14 @@ public class App {
 
 //report 16
         ArrayList<Country> countries16 = a.report16();
-        System.out.println("\nReport 16.  : ");
+        System.out.println("\nReport 16. All the countries in a region organised by largest population to smallest : ");
         printCountryList(countries16);
 
 
 //report 17
         int n = 10; // Specify the top N countries
         ArrayList<Country> countries17 = a.report17(n);
-        System.out.println("\nReport 17 : " );
+        System.out.println("\nReport 17. The top N populated countries in the world where N is provided by the user : " );
         printCountryList(countries17);
 
 
@@ -54,7 +54,7 @@ public class App {
         String continent = "Europe"; // Specify the continent
         n = 10; // Specify the top N countries
         ArrayList<Country> countries18 = a.report18(continent, n);
-        System.out.println("\nReport 18 : ");
+        System.out.println("\nReport 18. The top N populated countries in a continent where N is provided by the user : ");
         printCountryList(countries18);
 
 
@@ -62,94 +62,94 @@ public class App {
         String region = "Western Europe"; // Specify the region
         n = 5; // Specify the top N countries
         ArrayList<Country> countries19 = a.report19(region, n);
-        System.out.println("\nReport 19 size: ");
+        System.out.println("\nReport 19. The top N populated countries in a region where N is provided by the user : ");
         printCountryList(countries19);
 
         // report 20
         ArrayList<City> cities20 = a.report20();
-        System.out.println("\nReport 20: ");
+        System.out.println("\nReport 20. All the cities in the world organised by largest population to smallest : ");
         printCityList(cities20);
 
 
 // report 21
         ArrayList<City> cities21 = a.report21();
-        System.out.println("\nReport 21: ");
+        System.out.println("\nReport 21. All the cities in a continent organised by largest population to smallest : ");
         printCityList(cities21);
 
 
 // report 22
         region = "Western Europe"; // Specify the region
         ArrayList<City> cities22 = a.report22(region);
-        System.out.println("\nReport 22: ");
+        System.out.println("\nReport 22. All the cities in a region organised by largest population to smallest : ");
         printCityList(cities22);
 
         // report 23
         String country = "Germany"; // Specify the country
         ArrayList<City> cities23 = a.report23(country);
-        System.out.println("\nReport 23: ");
+        System.out.println("\nReport 23. All the cities in a country organised by largest population to smallest : ");
         printCityList(cities23);
 
 // report 24
         String district = "Buenos Aires"; // Specify the district
         ArrayList<City> cities24 = a.report24(district);
-        System.out.println("\nReport 24: ");
+        System.out.println("\nReport 24. All the cities in a district organised by largest population to smallest : ");
         printCityList(cities24);
 
         // report 25
         n = 5; // Specify the top N populated cities
         ArrayList<City> cities25 = a.report25(n);
-        System.out.println("\nReport 25: ");
+        System.out.println("\nReport 25. The top N populated cities in the world where N is provided by the user : ");
         printCityList(cities25);
 
         // report 26
         continent = "Asia"; // Specify the continent
         n = 5; // Specify the top N populated cities
         ArrayList<City> cities26 = a.report26(continent, n);
-        System.out.println("\nReport 26: ");
+        System.out.println("\nReport 26. The top N populated cities in a continent where N is provided by the user : ");
         printCityList(cities26);
 
 // report 27
         region = "Western Europe"; // Specify the region
         n = 10; //specify top N cities
         ArrayList<City> cities27 = a.report27(region, n);
-        System.out.println("\nReport 27: ");
+        System.out.println("\nReport 27. The top N populated cities in a region where N is provided by the user : ");
         printCityList(cities27);
 
         // report 28
         country = "Germany"; // Specify the district
         n = 10; //specify top N cities
         ArrayList<City> cities28 = a.report28(country, n);
-        System.out.println("\nReport 28: ");
+        System.out.println("\nReport 28. The top N populated cities in a country where N is provided by the user : ");
         printCityList(cities28);
 
         // report 29
         district = "Buenos Aires"; // Specify the district
         n = 10; //specify top N cities
         ArrayList<City> cities29 = a.report29(district, n);
-        System.out.println("\nReport 29: ");
+        System.out.println("\nReport 29. The top N populated cities in a district where N is provided by the user : ");
         printCityList(cities29);
 
 // report 30
         ArrayList<City> cities30 = a.report30();
-        System.out.println("\nReport 30: ");
+        System.out.println("\nReport 30. All the capital cities in the world organised by largest population to smallest : ");
         printCityList(cities30);
 
 // report 31
         continent = "Europe"; // Specify the continent
         ArrayList<City> cities31 = a.report31(continent);
-        System.out.println("\nReport 31: ");
+        System.out.println("\nReport 31. All the capital cities in a continent organised by largest population to smallest : ");
         printCityList(cities31);
 
         // report 32
         region = "Western Europe"; // Specify the region
         ArrayList<City> cities32 = a.report32(region);
-        System.out.println("\nReport 32: ");
+        System.out.println("\nReport 32. All the capital cities in a region organised by largest to smallest : ");
         printCityList(cities32);
 
         // report 33
         n = 5; // Specify the top N populated capital cities
         ArrayList<City> cities33 = a.report33(n);
-        System.out.println("\nReport 33: ");
+        System.out.println("\nReport 33. The top N populated capital cities in the world where N is provided by the user : ");
         printCityList(cities33);
 
 
@@ -157,28 +157,28 @@ public class App {
         continent = "Asia"; // Specify the continent
         n = 5; // Specify the top N populated capital cities
         ArrayList<City> topCapitalCities = a.report34(continent, n);
-        System.out.println("\nReport 34: ");
+        System.out.println("\nReport 34. The top N populated capital cities in a continent where N is provided by the user : ");
         printCityList(topCapitalCities);
 
         // report 35
         region = "Western Europe"; // Specify the region
         n = 5; //specify top N cities
         ArrayList<City> cities35 = a.report35(region, n);
-        System.out.println("\nReport 35: ");
+        System.out.println("\nReport 35. The top N populated capital cities in a region where N is provided by the user : ");
         printCityList(cities35);
 
 
         //report 36
-        System.out.println("\nReport 36: ");
+        System.out.println("\nReport 36. The population of people, people living in cities, and people not living in cities in each continent : ");
         a.report36();
 
         //report 37
-        System.out.println("\nReport 37: ");
+        System.out.println("\nReport 37. The population of people, people living in cities, and people not living in cities in each region : ");
         a.report37();
 
 
         // report 38
-        System.out.println("\nReport 38: ");
+        System.out.println("\nReport 38. The population of people, people living in cities, and people not living in cities in each country : ");
         a.report38();
 
 
@@ -190,55 +190,55 @@ public class App {
 // report 50
         continent = "Europe"; // Specify the continent
         long report50 = a.report50(continent);
-        System.out.println("\n Report50. Population of the continent " + report50);
+        System.out.println("\n Report50. Population of the " + continent + " continent " + report50);
 
 // report 51
         region = "Western Europe"; // Specify the region
         long report51 = a.report51(region);
-        System.out.println("\n Report51. Population of the region " + report51);
+        System.out.println("\n Report51. Population of the " + region + " region : " + report51);
 
         //report 52
         country = "Germany";
         a.report52(country);
-        System.out.println("\n Report52. Population of the country" + a.report52(country));
+        System.out.println("\n Report52. Population of the " + country + " country : " + a.report52(country));
 
 // report 53
         district = "Buenos Aires"; // Specify the district
         long report53 = a.report53(district);
-        System.out.println("\n Report53. Population of the district " + report53);
+        System.out.println("\n Report53. Population of the " + district + " district : " + report53);
 
 // report 54
         String city = "Edinburgh"; // Specify the district
         long report54 = a.report54(city);
-        System.out.println("\n Report54. Population of the city " + report54);
+        System.out.println("\n Report54. Population of the " + city + " city : " + report54);
 
 //report 56
-        System.out.println("\n Report 56: ");
+        System.out.println("\n Report 56. Country Report : ");
         country = "Germany";
         Country country56 = a.report56(country);
         printCountryDetails(country56);
 
 //report 57
-        System.out.println("\n Report 57: ");
+        System.out.println("\n Report 57. City Report : ");
         city = "Edinburgh";
         City city57 = a.report57(city);
         printCityDetails(city57);
 
 //report 58
-        System.out.println("\n Report 58: ");
+        System.out.println("\n Report 58. Capital City Report : ");
         city = "London";
         City city58 = a.report58(city);
         printCityDetails(city58);
 
 
         //report 59
-        System.out.println("\n Report 59: ");
+        System.out.println("\n Report 59. Continent Population Report : ");
         a.report59();
 
 
 // report 61
         ArrayList<Country> countries61 = a.report61();
-        System.out.println("\nReport 61 : " );
+        System.out.println("\nReport 61. Country Population Report : " );
         printCountryList(countries61);
 
 
