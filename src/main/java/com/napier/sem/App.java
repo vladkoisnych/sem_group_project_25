@@ -172,6 +172,12 @@ public class App {
         ArrayList<City> cities26 = a.report26(continent, n);
         System.out.println("Report 26 size: " + cities26.size());
 
+        // report 27
+        region = "Western Europe"; // Specify the region
+        n = 10; //specify top N cities
+        ArrayList<City> cities27 = a.report27(region, n);
+        System.out.println("Report 27 size: " + cities27.size());
+
         // Disconnect from database
         a.disconnect();
     }
@@ -1500,6 +1506,45 @@ public class App {
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Failed to get cities list. Report 26");
+            return null;
+        }
+    }
+    /**
+     * * report27 function
+     * * returning the top N populated cities in a region, where N is provided by the user
+     * * created for report 27.
+     * * @param n - n populated city in a region, is provided by the user
+     * */
+    public ArrayList<City> report27(String region, int n) {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.ID, city.Name, city.Population " +
+                            "FROM country " +
+                            "JOIN city ON Code = city.CountryCode " +
+                            "WHERE Region = '" + region + "' " +
+                            "ORDER BY city.Population DESC "+
+                            "LIMIT " + n;
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            ArrayList<City> cities = new ArrayList<>();
+
+            // Populate the array
+            while (rset.next()) {
+                City city = new City();
+                city.city_id = rset.getInt("ID");
+                city.city_name = rset.getString("Name");
+                city.city_population = rset.getInt("Population");
+
+                cities.add(city);
+            }
+            return cities;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get city list. Report 27");
             return null;
         }
     }
