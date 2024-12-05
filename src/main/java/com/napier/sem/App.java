@@ -166,6 +166,12 @@ public class App {
         ArrayList<City> cities20 = a.report20();
         System.out.println("Report 20 size: " + cities20.size());
 
+        // report 26
+        continent = "Asia"; // Specify the continent
+        n = 5; // Specify the top N populated  cities
+        ArrayList<City> cities26 = a.report26(continent, n);
+        System.out.println("Report 26 size: " + cities26.size());
+
         // Disconnect from database
         a.disconnect();
     }
@@ -1455,5 +1461,48 @@ public class App {
             return null;
         }
     }
+
+    /**
+     * * report26 function
+     * * returning the top N populated cities in a continent, where N  and continent is provided by the user
+     * * created for report 26.
+     * * @param n - n populated cities the world, is provided by the user
+     * * @param continent - target continent, provided by the user
+     * */
+    public ArrayList<City> report26(String continent, int n) {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement to get the top N populated capital cities in a continent
+            String strSelect =
+                    "SELECT city.ID, city.Name, city.Population " +
+                            "FROM country " +
+                            "JOIN city ON Code = city.CountryCode " +
+                            "WHERE country.Continent = '" + continent + "' " +
+                            "ORDER BY city.Population DESC "+
+                            "LIMIT " + n;
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            ArrayList<City> cities = new ArrayList<>();
+
+            // Populate the array with city data
+            while (rset.next()) {
+                City city = new City();
+                city.city_id = rset.getInt("ID");
+                city.city_name = rset.getString("Name");
+                city.city_population = rset.getInt("Population");
+
+                cities.add(city);
+            }
+            return cities;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get cities list. Report 26");
+            return null;
+        }
+    }
+
 }
 
