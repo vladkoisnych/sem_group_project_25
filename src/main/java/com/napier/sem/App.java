@@ -1566,7 +1566,7 @@ public class App {
             // Create string for SQL statement to get the top N populated cities in the world
             String strSelect =
                     "SELECT city.ID, city.Name, city.Population " +
-                            "FROM county " +
+                            "FROM country " +
                             "JOIN city ON CODE = country.CountryCode " +
                             "ORDER BY city.Population DESC " +
                             "LIMIT " + n;
