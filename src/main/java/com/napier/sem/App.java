@@ -1648,7 +1648,7 @@ public class App {
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT country.Continent AS Continent, SUM(city.Population) AS cities, (country.Population-SUM(city.Population)) AS other " + "SUM(country.population) AS total.population" +
+                    "SELECT country.Continent AS Continent, SUM(city.Population) AS cities, (country.Population-SUM(city.Population)) AS other  , SUM(country.population) AS total.population" +
                             "FROM country " +
                             "LEFT JOIN city ON country.Code= city.CountryCode " +
                             "GROUP By country.Continent";
