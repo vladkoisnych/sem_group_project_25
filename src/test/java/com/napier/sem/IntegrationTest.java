@@ -197,5 +197,169 @@ public class IntegrationTest
         ArrayList<City> topCapitalCities = app.report34(continent, n);
         assertEquals(5, topCapitalCities.size());
     }
+    /**
+     * Testing the report29 function, comparing with known answer
+     */
+    @Test
+    void testReport29() {
+        String district = "Buenos Aires"; // Specify the district
+        int n = 10; // Specify top N cities
+        ArrayList<City> cities29 = app.report29(district, n);
+        assertEquals(10, cities29.size());
+        System.out.println("Report 29 size: " + cities29.size());
+    }
+
+    /**
+     * Testing the report32 function, comparing with known answer
+     */
+    @Test
+    void testReport32() {
+        String region = "Western Europe"; // Specify the region
+        ArrayList<City> cities32 = app.report32(region);
+        assertEquals(9, cities32.size());
+        System.out.println("Report 32 size: " + cities32.size());
+    }
+
+    /**
+     * Testing the report35 function, comparing with known answer
+     */
+    @Test
+    void testReport35() {
+        String region = "Western Europe"; // Specify the region
+        int n = 5; // Specify top N cities
+        ArrayList<City> cities35 = app.report35(region, n);
+        assertEquals(5, cities35.size());
+        System.out.println("Report 35 size: " + cities35.size());
+    }
+
+    /**
+     * Testing the report38 function, comparing with known answer
+     */
+    @Test
+    void testReport38() {
+        app.report38();
+    }
+
+    /**
+     * Testing the report49 function, comparing with known answer
+     */
+    @Test
+    void testReport49() {
+        long report49 = app.report49();
+        assertEquals(6078749450L, report49);
+        System.out.println("\n Report49. Population of the world " + report49);
+    }
+
+    /**
+     * Testing the report50 function, comparing with known answer
+     */
+    @Test
+    void testReport50() {
+        String continent = "Europe"; // Specify the continent
+        long report50 = app.report50(continent);
+        assertEquals(730074600L, report50);
+        System.out.println("\n Report50. Population of the continent " + report50);
+    }
+
+    /**
+     * Testing the report51 function, comparing with known answer
+     */
+    @Test
+    void testReport51() {
+        String region = "Western Europe"; // Specify the region
+        long report51 = app.report51(region);
+        assertEquals(183247600L, report51);
+        System.out.println("\n Report51. Population of the region " + report51);
+    }
+
+    /**
+     * Testing the report53 function, comparing with known answer
+     */
+    @Test
+    void testReport53() {
+        String district = "Buenos Aires"; // Specify the district
+        long report53 = app.report53(district);
+        assertEquals(10530136L, report53);
+        System.out.println("\n Report53. Population of the district " + report53);
+    }
+
+    /**
+     * Testing the report54 function, comparing with known answer
+     */
+    @Test
+    void testReport54() {
+        String city = "Edinburgh"; // Specify the city
+        long report54 = app.report54(city);
+        assertEquals(450180L, report54);
+        System.out.println("\n Report54. Population of the city " + report54);
+    }
+
+    /**
+     * Testing the report20 function, comparing with known answer
+     */
+    @Test
+    void testReport20() {
+        ArrayList<City> cities20 = app.report20();
+        assertEquals(4079, cities20.size());
+        System.out.println("Report 20 size: " + cities20.size());
+    }
+
+    /**
+     * Testing the report26 function, comparing with known answer
+     */
+    @Test
+    void testReport26() {
+        String continent = "Asia"; // Specify the continent
+        int n = 5; // Specify top N populated cities
+        ArrayList<City> cities26 = app.report26(continent, n);
+        assertEquals(5, cities26.size());
+        System.out.println("Report 26 size: " + cities26.size());
+    }
+
+    /**
+     * Testing the report27 function, comparing with known answer
+     */
+    @Test
+    void testReport27() {
+        String region = "Western Europe"; // Specify the region
+        int n = 10; // Specify top N cities
+        ArrayList<City> cities27 = app.report27(region, n);
+        assertEquals(10, cities27.size());
+        System.out.println("Report 27 size: " + cities27.size());
+    }
+
+    /**
+     * Testing the report25 function, comparing with known answer
+     */
+    @Test
+    void testReport25() {
+        int n = 5; // Specify top N populated cities
+        ArrayList<City> cities25 = app.report25(n);
+        assertEquals(5, cities25.size());
+        System.out.println("Report 25 size: " + cities25.size());
+    }
+
+    /**
+     * Testing the report33 function, comparing with known answer
+     */
+    @Test
+    void testReport33() {
+        int n = 5; // Specify top N populated capital cities
+        ArrayList<City> cities33 = app.report33(n);
+        assertEquals(5, cities33.size());
+        System.out.println("Report 33 size: " + cities33.size());
+    }
+
+    /**
+     * Testing the report52 function, comparing with known answer
+     */
+    @Test
+    void testReport52() {
+        String country = "Germany"; // Specify the country
+        long report52 = app.report52(country);
+        assertEquals(82164700L, report52);
+        System.out.println("\n Report52. Population of the country " + report52);
+    }
+
 
 }

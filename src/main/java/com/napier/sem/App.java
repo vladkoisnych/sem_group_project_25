@@ -34,12 +34,12 @@ public class App {
 
 //report 15
         ArrayList<Country> countries15 = a.report15();
-        System.out.println("\nReport 15 : ");
+        System.out.println("\nReport 15. All the countries in a continent organised by largest population to smallest : ");
         printCountryList(countries15);
 
 //report 16
         ArrayList<Country> countries16 = a.report16();
-        System.out.println("\nReport 16 : ");
+        System.out.println("\nReport 16.  : ");
         printCountryList(countries16);
 
 
