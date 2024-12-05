@@ -125,27 +125,27 @@ public class App {
 
 // report 49
         long report49 = a.report49();
-        System.out.println("\n Report49. Population of the world" + report49);
+        System.out.println("\n Report49. Population of the world " + report49);
 
 // report 50
         continent = "Europe"; // Specify the continent
         long report50 = a.report50(continent);
-        System.out.println("\n Report50. Population of the continent" + report50);
+        System.out.println("\n Report50. Population of the continent " + report50);
 
 // report 51
         region = "Western Europe"; // Specify the region
         long report51 = a.report51(region);
-        System.out.println("\n Report51. Population of the region" + report51);
+        System.out.println("\n Report51. Population of the region " + report51);
 
 // report 53
         district = "Buenos Aires"; // Specify the district
         long report53 = a.report53(district);
-        System.out.println("\n Report53. Population of the district" + report53);
+        System.out.println("\n Report53. Population of the district " + report53);
 
 // report 54
         String city = "Edinburgh"; // Specify the district
         long report54 = a.report54(city);
-        System.out.println("\n Report54. Population of the city" + report54);
+        System.out.println("\n Report54. Population of the city " + report54);
 
 //report 56
         country = "Germany";
@@ -1803,15 +1803,27 @@ public class App {
 
             // SQL query to calculate the population of each continent and the population in and out of cities
             String strSelect =
-                    "SELECT country.Continent as Continent, " +
-                            "SUM(country.Population) AS total_population, " +
-                            "SUM(city.Population) AS population_in_cities, " +
-                            "(SUM(country.Population) - SUM(city.Population)) AS population_not_in_cities, " +
-                            "ROUND((SUM(city.Population) / SUM(country.Population)) * 100, 2) AS percentage_in_cities, " +
-                            "ROUND(((SUM(country.Population) - SUM(city.Population)) / SUM(country.Population)) * 100, 2) AS percentage_not_in_cities " +
-                            "FROM country " +
-                            "LEFT JOIN city ON country.Code = city.CountryCode " +
-                            "GROUP BY country.Continent";
+                    "SELECT " +
+                            "    Continent, " +
+                            "    SUM(total_population) AS total_population, " +
+                            "    SUM(cities_population) AS population_in_cities, " +
+                            "    SUM(total_population - cities_population) AS population_not_in_cities, " +
+                            "    ROUND((SUM(cities_population) / SUM(total_population)) * 100, 2) AS percentage_in_cities, " +
+                            "    ROUND((SUM(total_population - cities_population) / SUM(total_population)) * 100, 2) AS percentage_not_in_cities " +
+                            "FROM (" +
+                            "    SELECT " +
+                            "        country.Continent, " +
+                            "        country.Population AS total_population, " +
+                            "        COALESCE(SUM(city.Population), 0) AS cities_population " +
+                            "    FROM " +
+                            "        country " +
+                            "    LEFT JOIN " +
+                            "        city ON country.Code = city.CountryCode " +
+                            "    GROUP BY " +
+                            "        country.Code" +
+                            ") AS subquery " +
+                            "GROUP BY " +
+                            "    Continent";
 
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(strSelect);
