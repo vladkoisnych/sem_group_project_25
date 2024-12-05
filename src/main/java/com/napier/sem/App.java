@@ -190,6 +190,18 @@ public class App {
 //report 36
         a.report36();
 
+        //report 37
+        a.report37();
+
+        //report 52
+        country = "Germany";
+        a.report52(country);
+        System.out.println("\n Report52. Population of the country" + a.report52(country));
+
+
+        //report 59
+        a.report59();
+
 // Disconnect from database
         a.disconnect();
     }
@@ -1778,5 +1790,55 @@ public class App {
             return 0;
         }
     }
+
+    /**
+     * * report59 function
+     * * returning the population details of each continent
+     * * created for report 59.
+     */
+    public void report59() {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+
+            // SQL query to calculate the population of each continent and the population in and out of cities
+            String strSelect =
+                    "SELECT country.Continent as Continent, " +
+                            "SUM(country.Population) AS total_population, " +
+                            "SUM(city.Population) AS population_in_cities, " +
+                            "(SUM(country.Population) - SUM(city.Population)) AS population_not_in_cities, " +
+                            "ROUND((SUM(city.Population) / SUM(country.Population)) * 100, 2) AS percentage_in_cities, " +
+                            "ROUND(((SUM(country.Population) - SUM(city.Population)) / SUM(country.Population)) * 100, 2) AS percentage_not_in_cities " +
+                            "FROM country " +
+                            "LEFT JOIN city ON country.Code = city.CountryCode " +
+                            "GROUP BY country.Continent";
+
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+
+//print the template
+            System.out.print("\n" + "Continent" + " ");
+            System.out.print("Cities" + "/");
+            System.out.print("Not in Cities" + " ");
+            System.out.print("% in Cities" + " ");
+            System.out.print("% Not in Cities" + "\n");
+
+//print the answers
+            while (rset.next()) {
+                System.out.print(rset.getString("Continent") + " ");
+                System.out.print(rset.getString("population_in_cities") + "/");
+                System.out.print(rset.getString("population_not_in_cities") + " ");
+                System.out.print(rset.getString("percentage_in_cities") + "/");
+                System.out.print(rset.getString("percentage_not_in_cities") + "\n");
+            }
+
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get continent population details for Report 59");
+        }
+    }
+
 
 }
