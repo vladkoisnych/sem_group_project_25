@@ -1635,6 +1635,41 @@ public class App {
             return null;
         }
     }
+    /**
+     * * report36 function
+     * * returning population of each continent that live in cities and not in cities
+     * * created for report 36.
+     * */
+    public void report36() {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT country.Continent, SUM(city.Population) AS cities, (country.Population-SUM(city.Population)) AS other " +
+                            "FROM country " +
+                            "JOIN city ON country.Code= city.CountryCode " +
+                            "GROUP By country.Continent";
+            // Execute SQL statement
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+
+
+
+            // Populate the array
+            while (rset.next()) {
+                System.out.println(rset.getString("Continent"));
+                System.out.println(rset.getInt("cities"));
+                System.out.println(rset.getInt("other"));
+
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get list. Report 36");
+
+        }
+    }
 
 }
 
